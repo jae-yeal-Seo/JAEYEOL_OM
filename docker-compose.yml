@@ -1,0 +1,24 @@
+services:
+  om-nest:
+    build: .
+    env_file:
+      - ./.env
+    volumes:
+      - .:/code
+    ports:
+      - '8000:8000'
+
+  om-react:
+    image: node:16-alpine
+    volumes:
+      - ./frontend:/code/frontend
+    ports:
+      - '5173:5173'
+    command: >
+      sh -c "cd code/frontend && yarn install && yarn start --host"
+    stdin_open: true
+    tty: true
+# yarn install을 하는 기준이 궁금하다. package.json이 바뀌었을 때?
+# package.json만 바뀌면 바뀐 부분만 패키지 설치를 하고 폴더전체에서 변화가 있을 땐 package.json에 있는 패키지를 전부 재설치한다? 아닐 것 같은데
+# react도 package.json부터 옮기고 yarn install을 하면 좋을 것 같다. 
+# docker compose up했을 때 나는 에러 이해하기

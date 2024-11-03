@@ -13,5 +13,3 @@ RUN npm run build
 
 # コンテナを立ち上げたら実行する命令語
 CMD ["node", "dist/main"]
-
-EXPOSE 3000
