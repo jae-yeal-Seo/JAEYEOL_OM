@@ -15,6 +15,6 @@ services:
     ports:
       - '5173:5173'
     command: >
-      sh -c "cd code/frontend && npm install && npm run dev"
+      sh -c "cd code/frontend && npm install && npm run dev --host"
     stdin_open: true
     tty: true

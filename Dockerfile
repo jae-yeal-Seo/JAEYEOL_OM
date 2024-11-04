@@ -1,15 +1,16 @@
 FROM node:18-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /code
 
 COPY package*.json ./
 
-# --only=productionを通じてdevDependenciesはインストールしない
-RUN npm install --only=production
+RUN npm install
 
 COPY . .
 
 RUN npm run build
 
+EXPOSE 8000
+
 # コンテナを立ち上げたら実行する命令語
-CMD ["node", "dist/main"]
+CMD ["npm", "run", "start:prod"]
