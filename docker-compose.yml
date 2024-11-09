@@ -3,8 +3,6 @@ services:
     build: .
     env_file:
       - ./.env
-    volumes:
-      - .:/code
     ports:
       - '8000:8000'
 
