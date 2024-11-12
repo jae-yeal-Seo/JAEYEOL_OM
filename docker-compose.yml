@@ -3,8 +3,14 @@ services:
     build: .
     env_file:
       - ./.env
+    volumes:
+      - .:/code
     ports:
       - '8000:8000'
+    # main.tsに変更事項があるたびにコンパイルを実行する。
+    # タイプチェックはIDEでやって(--transpile-only)以下のコマンドではコンパイルだけ行う。
+    command: ts-node-dev --respawn --transpile-only src/main.ts
+
 
   om-react:
     image: node:18-alpine
