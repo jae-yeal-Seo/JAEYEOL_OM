@@ -9,7 +9,6 @@ services:
       - '8000:8000'
     command: npm run start
 
-
   om-react:
     image: node:18-alpine
     volumes:
